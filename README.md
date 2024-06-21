@@ -24,6 +24,9 @@ $ codium .
 **5. Go through the exercises starting with [`01-hello-world`](./01-hello-world/README.md). Each contains a `README.md` with**
    **detailed instructions and tasks to solve.**
 
+   If you prefer to do the exercises in Rust instead of C, there is a parallel list starting at [`rust01-hello-world`](./rust01-hello-world/README.md).
+   The exercises are generally similar, and only differ in details.
+
 
 ## Conventions
 Throughout the tutorials, we will specify commands and outputs.
