@@ -2,9 +2,16 @@
 ## Overview
 
 Collection of practical exercises, assignments, and tasks to become familiar
-with IoT technologies using Linux and RIOT-OS.
+with IoT technologies using Linux and RIOT.
 
 ## Getting started
+
+> [!IMPORTANT] 
+> It is strongly recommended to first read through
+> [RIOT's Getting Started Guide](https://guide.riot-os.org/getting-started/installing/)
+> before continuing with the exercises!
+> 
+> It covers the fundamentals of RIOT and the setup of a development environment.
 
 **1. Open a terminal at the local user's home directory**
 
@@ -19,7 +26,7 @@ $ cd exercises
 $ codium .
 ```
 
-**4. To avoid installing toolchains, you can use Docker instead. Follow the installation instructions [here](https://doc.riot-os.org/getting-started.html#docker)**
+**4. To avoid installing toolchains, you can use Docker instead. Follow the installation instructions [here](https://guide.riot-os.org/build-system/build-in-docker/)**
 
 **5. Go through the exercises starting with [`01-hello-world`](./01-hello-world/README.md). Each contains a `README.md` with**
    **detailed instructions and tasks to solve.**
