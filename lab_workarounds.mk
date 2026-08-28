@@ -5,3 +5,5 @@ PREFLASH_DELAY=10
 # The ZTIMER_MSEC seems to be broken on some compilers so we force docker
 # to ensure a working compiler.
 BUILD_IN_DOCKER ?= 1
+
+EXTERNAL_BOARD_DIRS += $(CURDIR)/..
