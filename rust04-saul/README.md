@@ -99,6 +99,11 @@ let accel = accel_sensor
 println!("Read acceleration: {accel:?}");
 ```
 
+The `{accel:?}` uses Rust's string formatting macros:
+`println!` and similar macros expand variables between `{}`.
+The `:?` tells the macro to use [Debug](https://doc.rust-lang.org/std/fmt/trait.Debug.html) formatting --
+we need to use it because the "plain" [Display](https://doc.rust-lang.org/std/fmt/trait.Display.html) human-readable format is not available on that type.
+
 **3. Build and flash the application. Open a serial port communication.**
 
 ## Task 4

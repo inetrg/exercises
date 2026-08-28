@@ -1,5 +1,5 @@
 [package]
-name = "saul-example"
+name = "thread-example"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,7 +13,9 @@ crate-type = ["staticlib"]
 panic = "abort"
 
 [dependencies]
-riot-wrappers = { version = "0.9.1", features = [ "set_panic_handler", "panic_handler_format" ] }
-switch-hal = "0.4.0"
+riot-sys = "0.7.12"
+riot-wrappers = { version = "0.9.1", features = ["set_panic_handler", "panic_handler_format"] }
 
 rust_riotmodules = { path = "../RIOT/sys/rust_riotmodules/" }
+static_cell = "2.1.0"
+switch-hal = "0.4.0"

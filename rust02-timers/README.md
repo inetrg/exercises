@@ -33,10 +33,10 @@ $ cd ../rust02-timers
 $ make all flash term
 ```
 
-**2. Reset the board. You should see a "Timeout!" string after 2 seconds.**
+**2. Reset the board. You should see "This is a timers example", and then a "Timeout!" string after 4 seconds.**
 
 ## Task 2
-Modify the application so that the board blinks the LED only for 250 ms for 10 iterations.
+Modify the application so that the board has the LED on for only 250 ms, and runs only 10 iterations.
 
 **1. Adapt the loop to be true for 10 iterations:**
 ```rust
@@ -45,7 +45,7 @@ for _ in 0..10 {
 
 **2. Sleep only for 250 ms for each iteration after setting the LED to "on":**
 ```rust
-Clock::msec().sleep(Duration::from_millis(250));
+Clock::msec().sleep_extended(Duration::from_millis(250));
 ```
 
 **3. Build and flash the application. Connect to the serial port:**
@@ -62,6 +62,10 @@ Add a new timer to turn LED1 on after 1 second.
 let mut led1 = riot_wrappers::led::LED::<1>::new();
 ```
 
+The `::<1>` is a generic argument:
+The LED subsystem of RIOT is optimized for low latency to assist in debugging,
+and the generic argument ensures that the number is known at build time.
+
 **2. Around the loop, call the [`set_during`](https://rustdoc.etonomy.org/riot_wrappers/ztimer/struct.Clock.html#method.set_during) function, and in the callback, turn on LED1.**
 
 ```rust
@@ -73,9 +77,16 @@ Clock::msec().set_during(
     || {
 ```
 
+(existing `for` loop remains in here)
+
 ```rust
 });
 ```
+
+The `||` indicates a [closure](https://doc.rust-lang.org/book/ch13-01-closures.html):
+a block of code that is not evaluated immediately,
+but passed into another call as a combination of a function and any variables captured from the context.
+(They do look a bit odd without arguments; the syntax may look more intuitive in examples with arguments such as `differentiate(|x| x**2 - 2*x + 1);`).
 
 Note that the LED 1 was sent from the main thread to the interrupt handler defined in the first closure.
 Code that should execute inside an interrupt handler is limited

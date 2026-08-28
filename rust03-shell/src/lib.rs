@@ -13,7 +13,7 @@ riot_main!(main);
 fn main() {
     use riot_wrappers::shell::CommandList;
     riot_wrappers::shell::new()
-        .run_forever_providing_buf();
+        .run_forever();
 }
 
 

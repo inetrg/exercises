@@ -1,5 +1,5 @@
 [package]
-name = "saul-example"
+name = "gpio-example"
 version = "0.1.0"
 edition = "2021"
 
@@ -13,7 +13,7 @@ crate-type = ["staticlib"]
 panic = "abort"
 
 [dependencies]
+embedded-hal = "1.0.0"
 riot-wrappers = { version = "0.9.1", features = [ "set_panic_handler", "panic_handler_format" ] }
-switch-hal = "0.4.0"
 
 rust_riotmodules = { path = "../RIOT/sys/rust_riotmodules/" }

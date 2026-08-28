@@ -16,10 +16,10 @@ const TEMPERATURE_THRESHOLD: i16 = 2400; // °C * 10^-2
 
 fn main() {
     // Startup delay to ensure the terminal is connected
-    Clock::sec().sleep(Duration::from_secs(5));
+    Clock::sec().sleep_extended(Duration::from_secs(5));
 
     use switch_hal::OutputSwitch;
-    let mut led0 = riot_wrappers::led::LED::<0>::new();
+    let mut led0 = riot_wrappers::led::LED::<0>::new_checked().expect("Our board has an LED0");
 
     let temp_sensor = RegistryEntry::all()
         .filter(|e| matches!(e.type_(), Some(Class::Sensor(Some(SensorClass::Temp)))))
@@ -44,6 +44,6 @@ fn main() {
             led0.off().unwrap();
         }
 
-        Clock::msec().sleep(Duration::from_millis(500));
+        Clock::msec().sleep_extended(Duration::from_millis(500));
     }
 }

@@ -16,19 +16,19 @@ riot_main!(main);
 
 fn main() {
     // Startup delay to ensure the terminal is connected
-    Clock::sec().sleep(Duration::from_secs(5));
+    Clock::sec().sleep_extended(Duration::from_secs(5));
 
     println!("This is a timers example");
 
     // We can use sleep to just get delays
-    Clock::sec().sleep(Duration::from_secs(2));
+    Clock::sec().sleep_extended(Duration::from_secs(2));
 
     // Many times can be expressed on different timers, but usable ranges and precision vary.
-    Clock::msec().sleep(Duration::from_secs(2));
+    Clock::msec().sleep_extended(Duration::from_secs(2));
 
     println!("Timeout!");
 
-    let mut led0 = riot_wrappers::led::LED::<0>::new();
+    let mut led0 = riot_wrappers::led::LED::<0>::new_checked().expect("Our board has an LED0");
 
 
     for _ in 0..20 {
@@ -38,9 +38,9 @@ fn main() {
         // In future Rust versions we can express this even more clearly
         // <https://github.com/rust-lang/rust/pull/122792>.
         led0.on().unwrap();
-        Clock::msec().sleep(Duration::from_millis(500));
+        Clock::msec().sleep_extended(Duration::from_millis(500));
         led0.off().unwrap();
-        Clock::msec().sleep(Duration::from_millis(500));
+        Clock::msec().sleep_extended(Duration::from_millis(500));
     }
 
     println!("Done!");

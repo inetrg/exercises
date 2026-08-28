@@ -13,7 +13,7 @@ crate-type = ["staticlib"]
 panic = "abort"
 
 [dependencies]
-riot-wrappers = { version = "0.8", features = [ "set_panic_handler", "panic_handler_format" ] }
+riot-wrappers = { version = "0.9.1", features = [ "set_panic_handler", "panic_handler_format" ] }
 
 rust_riotmodules = { path = "../RIOT/sys/rust_riotmodules/" }
 switch-hal = "0.4.0"
